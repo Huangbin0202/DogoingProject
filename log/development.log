@@ -151,3 +151,1228 @@ Processing by TodosController#index as HTML
   Rendered layouts/_navigation.html.erb (35.4ms)
   Rendered layouts/_messages.html.erb (0.3ms)
 Completed 200 OK in 465ms (Views: 350.6ms | ActiveRecord: 2.9ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for 121.195.114.213 at 2016-01-17 04:55:02 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (9.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TodosController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTodo Load (0.3ms)[0m  [1mSELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ? AND "todos"."time_pinned" = '2016-01-17'[0m  [["user_id", 1]]
+  [1m[35mTodo Load (0.3ms)[0m  SELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ?  ORDER BY deadline IS NULL, deadline ASC  [["user_id", 1]]
+  Rendered todos/index.html.erb within layouts/application (35.1ms)
+  [1m[36mCategory Load (0.5ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered layouts/_navigation.html.erb (60.3ms)
+  Rendered layouts/_messages.html.erb (0.8ms)
+Completed 200 OK in 1391ms (Views: 1042.8ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/logout" for 121.195.114.239 at 2016-01-17 04:55:13 +0000
+Processing by SessionsController#destroy as HTML
+Redirected to https://todo-huangbin0202.c9users.io/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 121.195.114.239 at 2016-01-17 04:55:13 +0000
+Processing by TodosController#index as HTML
+  Rendered todos/index.html.erb within layouts/application (1.4ms)
+  Rendered layouts/_navigation.html.erb (2.8ms)
+  Rendered layouts/_messages.html.erb (0.9ms)
+Completed 200 OK in 357ms (Views: 356.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/register" for 121.195.114.239 at 2016-01-17 04:55:15 +0000
+Processing by UsersController#new as HTML
+  Rendered shared/_content_title.html.erb (0.6ms)
+  Rendered todos/_errors.html.erb (4.6ms)
+  Rendered users/new.html.erb within layouts/application (51.1ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 452ms (Views: 450.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 121.195.114.57 at 2016-01-17 04:55:23 +0000
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DzQ6UUQAHPQ7SV1qJssIENh+qCf7un2NyS3ThVynMqo=", "user"=>{"first_name"=>"asdas", "last_name"=>"asdda", "username"=>"huangbin", "password"=>"[FILTERED]"}, "commit"=>"注册"}
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."username" = 'huangbin' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  Rendered shared/_content_title.html.erb (0.3ms)
+  Rendered todos/_errors.html.erb (1.1ms)
+  Rendered users/new.html.erb within layouts/application (7.5ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 585ms (Views: 378.5ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users" for 121.195.114.74 at 2016-01-17 04:55:48 +0000
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DzQ6UUQAHPQ7SV1qJssIENh+qCf7un2NyS3ThVynMqo=", "user"=>{"first_name"=>"asdas", "last_name"=>"asdda", "username"=>"huangbin21", "password"=>"[FILTERED]"}, "commit"=>"注册"}
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."username" = 'huangbin21' LIMIT 1
+Binary data inserted for `string` type on column `password_digest`
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "users" ("created_at", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", "2016-01-17 04:55:48.649599"], ["first_name", "asdas"], ["last_name", "asdda"], ["password_digest", "$2a$10$nrcx4h1GzEsSDpdbkx6SeOB0izwYXKrHe5stl4Kwp/KuoP96hzbyK"], ["updated_at", "2016-01-17 04:55:48.649599"], ["username", "huangbin21"]]
+  [1m[35m (11.8ms)[0m  commit transaction
+Redirected to https://todo-huangbin0202.c9users.io/
+Completed 302 Found in 184ms (ActiveRecord: 12.8ms)
+
+
+Started GET "/" for 121.195.114.74 at 2016-01-17 04:55:48 +0000
+Processing by TodosController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mTodo Load (0.2ms)[0m  SELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ? AND "todos"."time_pinned" = '2016-01-17'  [["user_id", 2]]
+  [1m[36mTodo Load (0.2ms)[0m  [1mSELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ?  ORDER BY deadline IS NULL, deadline ASC[0m  [["user_id", 2]]
+  Rendered todos/index.html.erb within layouts/application (3.0ms)
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?  [["user_id", 2]]
+  Rendered layouts/_navigation.html.erb (6.4ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 529ms (Views: 524.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 121.195.114.80 at 2016-01-17 04:57:51 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TodosController#index as HTML
+  Rendered todos/index.html.erb within layouts/application (6.7ms)
+  Rendered layouts/_navigation.html.erb (1.6ms)
+  Rendered layouts/_messages.html.erb (0.7ms)
+Completed 200 OK in 627ms (Views: 609.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 121.195.114.80 at 2016-01-17 04:57:57 +0000
+Processing by SessionsController#new as HTML
+  Rendered shared/_content_title.html.erb (0.9ms)
+  Rendered sessions/new.html.erb within layouts/application (61.2ms)
+  Rendered layouts/_navigation.html.erb (1.8ms)
+  Rendered layouts/_messages.html.erb (0.6ms)
+Completed 200 OK in 334ms (Views: 332.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 121.195.114.42 at 2016-01-17 04:58:09 +0000
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rBZV1PCeR4tZvWzQ8Adh6077SFb50YdCMFqVAW1zZak=", "username"=>"hdy123", "password"=>"[FILTERED]", "commit"=>"登录"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."username" = 'hdy123' LIMIT 1
+  Rendered shared/_content_title.html.erb (0.6ms)
+  Rendered sessions/new.html.erb within layouts/application (4.6ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 473ms (Views: 297.5ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/" for 121.195.114.42 at 2016-01-17 04:58:13 +0000
+Processing by TodosController#index as HTML
+  Rendered todos/index.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 286ms (Views: 284.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 121.195.114.42 at 2016-01-17 04:58:15 +0000
+Processing by SessionsController#new as HTML
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered sessions/new.html.erb within layouts/application (4.0ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 330ms (Views: 329.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 121.195.114.208 at 2016-01-17 04:58:43 +0000
+Processing by TodosController#index as HTML
+  Rendered todos/index.html.erb within layouts/application (1.8ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 255ms (Views: 253.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 121.195.114.208 at 2016-01-17 04:58:46 +0000
+Processing by SessionsController#new as HTML
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered sessions/new.html.erb within layouts/application (2.9ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 378ms (Views: 329.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/register" for 121.195.114.208 at 2016-01-17 04:58:50 +0000
+Processing by UsersController#new as HTML
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered todos/_errors.html.erb (5.4ms)
+  Rendered users/new.html.erb within layouts/application (120.5ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 394ms (Views: 391.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 121.195.114.134 at 2016-01-17 05:00:03 +0000
+Processing by TodosController#index as HTML
+  Rendered todos/index.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 332ms (Views: 331.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 121.195.114.134 at 2016-01-17 05:00:06 +0000
+Processing by SessionsController#new as HTML
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered sessions/new.html.erb within layouts/application (2.9ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 421ms (Views: 420.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 121.195.114.134 at 2016-01-17 05:00:10 +0000
+Processing by TodosController#index as HTML
+  Rendered todos/index.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_navigation.html.erb (0.2ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 285ms (Views: 284.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/register" for 121.195.114.134 at 2016-01-17 05:00:11 +0000
+Processing by UsersController#new as HTML
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered todos/_errors.html.erb (0.1ms)
+  Rendered users/new.html.erb within layouts/application (6.7ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 234ms (Views: 232.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 121.195.114.25 at 2016-01-17 05:00:28 +0000
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rBZV1PCeR4tZvWzQ8Adh6077SFb50YdCMFqVAW1zZak=", "user"=>{"first_name"=>"hou", "last_name"=>"hou", "username"=>"hdy001", "password"=>"[FILTERED]"}, "commit"=>"注册"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."username" = 'hdy001' LIMIT 1
+Binary data inserted for `string` type on column `password_digest`
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "users" ("created_at", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", "2016-01-17 05:00:28.899886"], ["first_name", "hou"], ["last_name", "hou"], ["password_digest", "$2a$10$5Ax85lv7fDXn19ZRY8jbeeg5SGJiWqHH3Nz1x5bivHG7ztQIwINqS"], ["updated_at", "2016-01-17 05:00:28.899886"], ["username", "hdy001"]]
+  [1m[35m (16.6ms)[0m  commit transaction
+Redirected to https://todo-huangbin0202.c9users.io/
+Completed 302 Found in 189ms (ActiveRecord: 17.7ms)
+
+
+Started GET "/" for 121.195.114.25 at 2016-01-17 05:00:29 +0000
+Processing by TodosController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mTodo Load (0.2ms)[0m  SELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ? AND "todos"."time_pinned" = '2016-01-17'  [["user_id", 3]]
+  [1m[36mTodo Load (0.2ms)[0m  [1mSELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ?  ORDER BY deadline IS NULL, deadline ASC[0m  [["user_id", 3]]
+  Rendered todos/index.html.erb within layouts/application (4.1ms)
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?  [["user_id", 3]]
+  Rendered layouts/_navigation.html.erb (81.8ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 411ms (Views: 358.7ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/users/3" for 121.195.114.25 at 2016-01-17 05:00:34 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered todos/_errors.html.erb (0.1ms)
+  Rendered users/_form.html.erb (7.5ms)
+  Rendered users/show.html.erb within layouts/application (12.8ms)
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 3]]
+  Rendered layouts/_navigation.html.erb (3.8ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 359ms (Views: 356.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 121.195.114.94 at 2016-01-17 05:02:48 +0000
+Processing by TodosController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mTodo Load (0.1ms)[0m  [1mSELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ? AND "todos"."time_pinned" = '2016-01-17'[0m  [["user_id", 3]]
+  [1m[35mTodo Load (0.1ms)[0m  SELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ?  ORDER BY deadline IS NULL, deadline ASC  [["user_id", 3]]
+  Rendered todos/index.html.erb within layouts/application (1.8ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 3]]
+  Rendered layouts/_navigation.html.erb (4.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 250ms (Views: 247.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/logout" for 121.195.114.191 at 2016-01-17 05:02:55 +0000
+Processing by SessionsController#destroy as HTML
+Redirected to https://todo-huangbin0202.c9users.io/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 121.195.114.191 at 2016-01-17 05:02:56 +0000
+Processing by TodosController#index as HTML
+  Rendered todos/index.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_navigation.html.erb (0.2ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 332ms (Views: 331.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 121.195.114.191 at 2016-01-17 05:02:59 +0000
+Processing by SessionsController#new as HTML
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered sessions/new.html.erb within layouts/application (6.4ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 242ms (Views: 241.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 121.195.114.1 at 2016-01-17 05:03:06 +0000
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rBZV1PCeR4tZvWzQ8Adh6077SFb50YdCMFqVAW1zZak=", "username"=>"hdy007", "password"=>"[FILTERED]", "commit"=>"登录"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."username" = 'hdy007' LIMIT 1
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered sessions/new.html.erb within layouts/application (3.4ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 430ms (Views: 427.8ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/login" for 121.195.114.232 at 2016-01-17 05:03:19 +0000
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rBZV1PCeR4tZvWzQ8Adh6077SFb50YdCMFqVAW1zZak=", "username"=>"hdy001", "password"=>"[FILTERED]", "commit"=>"登录"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."username" = 'hdy001' LIMIT 1[0m
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered sessions/new.html.erb within layouts/application (3.0ms)
+  Rendered layouts/_navigation.html.erb (0.2ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 372ms (Views: 295.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 121.195.114.228 at 2016-01-17 05:03:27 +0000
+Processing by TodosController#index as HTML
+  Rendered todos/index.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 338ms (Views: 337.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 121.195.114.228 at 2016-01-17 05:03:30 +0000
+Processing by SessionsController#new as HTML
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered sessions/new.html.erb within layouts/application (3.3ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 392ms (Views: 390.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 121.195.114.228 at 2016-01-17 05:03:32 +0000
+Processing by TodosController#index as HTML
+  Rendered todos/index.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_navigation.html.erb (0.2ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 343ms (Views: 342.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/register" for 121.195.114.228 at 2016-01-17 05:03:33 +0000
+Processing by UsersController#new as HTML
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered todos/_errors.html.erb (0.1ms)
+  Rendered users/new.html.erb within layouts/application (8.8ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 473ms (Views: 472.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 121.195.114.122 at 2016-01-17 05:03:48 +0000
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rBZV1PCeR4tZvWzQ8Adh6077SFb50YdCMFqVAW1zZak=", "user"=>{"first_name"=>"hou", "last_name"=>"hou", "username"=>"hdy1", "password"=>"[FILTERED]"}, "commit"=>"注册"}
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."username" = 'hdy1' LIMIT 1[0m
+Binary data inserted for `string` type on column `password_digest`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", "2016-01-17 05:03:48.702563"], ["first_name", "hou"], ["last_name", "hou"], ["password_digest", "$2a$10$/shkNoycVjsU5kDHpZy6u.sDZZ8dRg8euGnt6aFv.oaHHqlbuqkYS"], ["updated_at", "2016-01-17 05:03:48.702563"], ["username", "hdy1"]]
+  [1m[36m (16.3ms)[0m  [1mcommit transaction[0m
+Redirected to https://todo-huangbin0202.c9users.io/
+Completed 302 Found in 149ms (ActiveRecord: 17.2ms)
+
+
+Started GET "/" for 121.195.114.122 at 2016-01-17 05:03:48 +0000
+Processing by TodosController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mTodo Load (0.2ms)[0m  [1mSELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ? AND "todos"."time_pinned" = '2016-01-17'[0m  [["user_id", 4]]
+  [1m[35mTodo Load (0.2ms)[0m  SELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ?  ORDER BY deadline IS NULL, deadline ASC  [["user_id", 4]]
+  Rendered todos/index.html.erb within layouts/application (3.1ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 4]]
+  Rendered layouts/_navigation.html.erb (5.2ms)
+  Rendered layouts/_messages.html.erb (0.3ms)
+Completed 200 OK in 397ms (Views: 392.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/todos/new" for 121.195.114.6 at 2016-01-17 05:03:55 +0000
+Processing by TodosController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered todos/_errors.html.erb (0.1ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 4]]
+  Rendered todos/new.html.erb within layouts/application (42.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?  [["user_id", 4]]
+  Rendered layouts/_navigation.html.erb (2.9ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 469ms (Views: 465.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/todos/completed" for 121.195.114.6 at 2016-01-17 05:03:56 +0000
+Processing by TodosController#completed as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  [1m[35mTodo Load (0.1ms)[0m  SELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ? AND "todos"."time_pinned" = '2016-01-17'  [["user_id", 4]]
+  [1m[36mTodo Load (0.2ms)[0m  [1mSELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ?  ORDER BY deadline IS NULL, deadline ASC[0m  [["user_id", 4]]
+  Rendered todos/completed.html.erb within layouts/application (5.2ms)
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?  [["user_id", 4]]
+  Rendered layouts/_navigation.html.erb (4.4ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 281ms (Views: 277.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/todos/new" for 121.195.114.130 at 2016-01-17 05:06:03 +0000
+Processing by TodosController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered todos/_errors.html.erb (0.5ms)
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?  [["user_id", 4]]
+  Rendered todos/new.html.erb within layouts/application (11.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 4]]
+  Rendered layouts/_navigation.html.erb (4.2ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 333ms (Views: 331.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/bugs/new" for 121.195.114.45 at 2016-01-17 05:06:50 +0000
+Processing by BugsController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered shared/_content_title.html.erb (0.2ms)
+  Rendered bugs/new.html.erb within layouts/application (17.8ms)
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 4]]
+  Rendered layouts/_navigation.html.erb (6.7ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 309ms (Views: 299.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/bugs/new" for 121.195.114.34 at 2016-01-17 05:07:35 +0000
+Processing by BugsController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered bugs/new.html.erb within layouts/application (4.9ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 4]]
+  Rendered layouts/_navigation.html.erb (3.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 427ms (Views: 424.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/bugs/new" for 121.195.114.16 at 2016-01-17 05:08:09 +0000
+Processing by BugsController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered bugs/new.html.erb within layouts/application (9.8ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 4]]
+  Rendered layouts/_navigation.html.erb (3.7ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 332ms (Views: 329.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/features/new" for 121.195.114.16 at 2016-01-17 05:08:13 +0000
+Processing by FeaturesController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered features/new.html.erb within layouts/application (13.0ms)
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 4]]
+  Rendered layouts/_navigation.html.erb (5.0ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 263ms (Views: 255.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/features/new" for 121.195.114.32 at 2016-01-17 05:09:12 +0000
+Processing by FeaturesController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered features/new.html.erb within layouts/application (6.4ms)
+  [1m[36mCategory Load (0.4ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 4]]
+  Rendered layouts/_navigation.html.erb (6.0ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 358ms (Views: 355.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/features/new" for 121.195.114.32 at 2016-01-17 05:09:17 +0000
+Processing by FeaturesController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered features/new.html.erb within layouts/application (7.3ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 4]]
+  Rendered layouts/_navigation.html.erb (3.9ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 412ms (Views: 409.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/bugs/new" for 121.195.114.32 at 2016-01-17 05:09:18 +0000
+Processing by BugsController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered bugs/new.html.erb within layouts/application (7.9ms)
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 4]]
+  Rendered layouts/_navigation.html.erb (5.0ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 506ms (Views: 501.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 121.195.114.32 at 2016-01-17 05:09:20 +0000
+Processing by TodosController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mTodo Load (0.2ms)[0m  [1mSELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ? AND "todos"."time_pinned" = '2016-01-17'[0m  [["user_id", 4]]
+  [1m[35mTodo Load (0.1ms)[0m  SELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ?  ORDER BY deadline IS NULL, deadline ASC  [["user_id", 4]]
+  Rendered todos/index.html.erb within layouts/application (2.3ms)
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 4]]
+  Rendered layouts/_navigation.html.erb (7.1ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 374ms (Views: 370.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/todos/new" for 121.195.114.32 at 2016-01-17 05:09:22 +0000
+Processing by TodosController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered todos/_errors.html.erb (0.1ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 4]]
+  Rendered todos/new.html.erb within layouts/application (11.4ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?  [["user_id", 4]]
+  Rendered layouts/_navigation.html.erb (5.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 344ms (Views: 341.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 121.195.114.230 at 2016-01-17 05:11:04 +0000
+Processing by TodosController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mTodo Load (0.1ms)[0m  SELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ? AND "todos"."time_pinned" = '2016-01-17'  [["user_id", 4]]
+  [1m[36mTodo Load (0.1ms)[0m  [1mSELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ?  ORDER BY deadline IS NULL, deadline ASC[0m  [["user_id", 4]]
+  Rendered todos/index.html.erb within layouts/application (83.1ms)
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?  [["user_id", 4]]
+  Rendered layouts/_navigation.html.erb (4.0ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 380ms (Views: 377.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/4" for 121.195.114.94 at 2016-01-17 05:11:07 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered todos/_errors.html.erb (0.1ms)
+  Rendered users/_form.html.erb (6.6ms)
+  Rendered users/show.html.erb within layouts/application (12.6ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 4]]
+  Rendered layouts/_navigation.html.erb (5.6ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 241ms (Views: 237.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/4/edit" for 121.195.114.94 at 2016-01-17 05:11:09 +0000
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered todos/_errors.html.erb (0.1ms)
+  Rendered users/_form.html.erb (4.4ms)
+  Rendered users/edit.html.erb within layouts/application (9.6ms)
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?  [["user_id", 4]]
+  Rendered layouts/_navigation.html.erb (4.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 296ms (Views: 293.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/4" for 121.195.114.94 at 2016-01-17 05:11:12 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered todos/_errors.html.erb (0.1ms)
+  Rendered users/_form.html.erb (5.5ms)
+  Rendered users/show.html.erb within layouts/application (11.1ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 4]]
+  Rendered layouts/_navigation.html.erb (3.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 331ms (Views: 328.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/features/new" for 121.195.114.15 at 2016-01-17 05:11:26 +0000
+Processing by FeaturesController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered features/new.html.erb within layouts/application (4.1ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 4]]
+  Rendered layouts/_navigation.html.erb (3.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 279ms (Views: 277.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/bugs/new" for 121.195.114.18 at 2016-01-17 05:11:27 +0000
+Processing by BugsController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered bugs/new.html.erb within layouts/application (3.8ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 4]]
+  Rendered layouts/_navigation.html.erb (3.9ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 256ms (Views: 253.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/todos/new" for 121.195.114.15 at 2016-01-17 05:11:29 +0000
+Processing by TodosController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered todos/_errors.html.erb (0.1ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 4]]
+  Rendered todos/new.html.erb within layouts/application (10.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?  [["user_id", 4]]
+  Rendered layouts/_navigation.html.erb (3.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 489ms (Views: 486.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/todos/completed" for 121.195.114.18 at 2016-01-17 05:11:30 +0000
+Processing by TodosController#completed as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  [1m[35mTodo Load (0.2ms)[0m  SELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ? AND "todos"."time_pinned" = '2016-01-17'  [["user_id", 4]]
+  [1m[36mTodo Load (0.1ms)[0m  [1mSELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ?  ORDER BY deadline IS NULL, deadline ASC[0m  [["user_id", 4]]
+  Rendered todos/completed.html.erb within layouts/application (4.1ms)
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?  [["user_id", 4]]
+  Rendered layouts/_navigation.html.erb (3.7ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 475ms (Views: 471.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 121.195.114.18 at 2016-01-17 05:11:31 +0000
+Processing by TodosController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mTodo Load (0.1ms)[0m  SELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ? AND "todos"."time_pinned" = '2016-01-17'  [["user_id", 4]]
+  [1m[36mTodo Load (0.3ms)[0m  [1mSELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ?  ORDER BY deadline IS NULL, deadline ASC[0m  [["user_id", 4]]
+  Rendered todos/index.html.erb within layouts/application (2.0ms)
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?  [["user_id", 4]]
+  Rendered layouts/_navigation.html.erb (4.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 365ms (Views: 361.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/bugs/new" for 121.195.114.61 at 2016-01-17 05:11:38 +0000
+Processing by BugsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered bugs/new.html.erb within layouts/application (3.9ms)
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?  [["user_id", 4]]
+  Rendered layouts/_navigation.html.erb (3.7ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 233ms (Views: 230.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 121.195.114.62 at 2016-01-17 05:15:54 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TodosController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mTodo Load (0.2ms)[0m  [1mSELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ? AND "todos"."time_pinned" = '2016-01-17'[0m  [["user_id", 4]]
+  [1m[35mTodo Load (0.3ms)[0m  SELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ?  ORDER BY deadline IS NULL, deadline ASC  [["user_id", 4]]
+  Rendered todos/index.html.erb within layouts/application (21.0ms)
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 4]]
+  Rendered layouts/_navigation.html.erb (39.0ms)
+  Rendered layouts/_messages.html.erb (0.8ms)
+Completed 200 OK in 826ms (Views: 639.9ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/" for 121.195.114.214 at 2016-01-17 05:16:01 +0000
+Processing by TodosController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mTodo Load (0.2ms)[0m  [1mSELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ? AND "todos"."time_pinned" = '2016-01-17'[0m  [["user_id", 4]]
+  [1m[35mTodo Load (0.1ms)[0m  SELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ?  ORDER BY deadline IS NULL, deadline ASC  [["user_id", 4]]
+  Rendered todos/index.html.erb within layouts/application (1.7ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 4]]
+  Rendered layouts/_navigation.html.erb (3.8ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 301ms (Views: 297.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/bugs/new" for 121.195.114.9 at 2016-01-17 05:16:11 +0000
+Processing by BugsController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered shared/_content_title.html.erb (0.4ms)
+  Rendered bugs/new.html.erb within layouts/application (39.3ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 4]]
+  Rendered layouts/_navigation.html.erb (6.5ms)
+  Rendered layouts/_messages.html.erb (0.7ms)
+Completed 200 OK in 358ms (Views: 350.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/features/new" for 121.195.114.90 at 2016-01-17 05:16:13 +0000
+Processing by FeaturesController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered features/new.html.erb within layouts/application (11.8ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 4]]
+  Rendered layouts/_navigation.html.erb (4.6ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 355ms (Views: 349.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 121.195.114.9 at 2016-01-17 05:16:14 +0000
+Processing by TodosController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mTodo Load (0.2ms)[0m  [1mSELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ? AND "todos"."time_pinned" = '2016-01-17'[0m  [["user_id", 4]]
+  [1m[35mTodo Load (0.3ms)[0m  SELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ?  ORDER BY deadline IS NULL, deadline ASC  [["user_id", 4]]
+  Rendered todos/index.html.erb within layouts/application (3.0ms)
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 4]]
+  Rendered layouts/_navigation.html.erb (4.1ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 374ms (Views: 370.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/logout" for 121.195.114.90 at 2016-01-17 05:16:17 +0000
+Processing by SessionsController#destroy as HTML
+Redirected to https://todo-huangbin0202.c9users.io/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 121.195.114.90 at 2016-01-17 05:16:17 +0000
+Processing by TodosController#index as HTML
+  Rendered todos/index.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 332ms (Views: 330.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 121.195.114.90 at 2016-01-17 05:16:19 +0000
+Processing by SessionsController#new as HTML
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered sessions/new.html.erb within layouts/application (3.5ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 242ms (Views: 241.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 121.195.114.90 at 2016-01-17 05:16:24 +0000
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rBZV1PCeR4tZvWzQ8Adh6077SFb50YdCMFqVAW1zZak=", "username"=>"hdy1", "password"=>"[FILTERED]", "commit"=>"登录"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."username" = 'hdy1' LIMIT 1
+Redirected to https://todo-huangbin0202.c9users.io/
+Completed 302 Found in 76ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 121.195.114.90 at 2016-01-17 05:16:25 +0000
+Processing by TodosController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mTodo Load (0.1ms)[0m  SELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ? AND "todos"."time_pinned" = '2016-01-17'  [["user_id", 4]]
+  [1m[36mTodo Load (0.1ms)[0m  [1mSELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ?  ORDER BY deadline IS NULL, deadline ASC[0m  [["user_id", 4]]
+  Rendered todos/index.html.erb within layouts/application (1.6ms)
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?  [["user_id", 4]]
+  Rendered layouts/_navigation.html.erb (3.1ms)
+  Rendered layouts/_messages.html.erb (0.4ms)
+Completed 200 OK in 272ms (Views: 268.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/4" for 121.195.114.223 at 2016-01-17 05:16:32 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered todos/_errors.html.erb (0.5ms)
+  Rendered users/_form.html.erb (9.5ms)
+  Rendered users/show.html.erb within layouts/application (14.8ms)
+  [1m[36mCategory Load (0.5ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 4]]
+  Rendered layouts/_navigation.html.erb (5.0ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 324ms (Views: 320.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/4/edit" for 121.195.114.223 at 2016-01-17 05:16:34 +0000
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered todos/_errors.html.erb (0.1ms)
+  Rendered users/_form.html.erb (173.3ms)
+  Rendered users/edit.html.erb within layouts/application (179.5ms)
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?  [["user_id", 4]]
+  Rendered layouts/_navigation.html.erb (3.3ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 563ms (Views: 559.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/logout" for 121.195.114.223 at 2016-01-17 05:16:37 +0000
+Processing by SessionsController#destroy as HTML
+Redirected to https://todo-huangbin0202.c9users.io/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 121.195.114.223 at 2016-01-17 05:16:37 +0000
+Processing by TodosController#index as HTML
+  Rendered todos/index.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 328ms (Views: 327.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 121.195.114.223 at 2016-01-17 05:16:40 +0000
+Processing by SessionsController#new as HTML
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered sessions/new.html.erb within layouts/application (2.9ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 331ms (Views: 330.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 121.195.114.223 at 2016-01-17 05:16:42 +0000
+Processing by TodosController#index as HTML
+  Rendered todos/index.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 303ms (Views: 302.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/register" for 121.195.114.223 at 2016-01-17 05:16:43 +0000
+Processing by UsersController#new as HTML
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered todos/_errors.html.erb (0.1ms)
+  Rendered users/new.html.erb within layouts/application (81.4ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 356ms (Views: 354.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 121.195.114.223 at 2016-01-17 05:16:46 +0000
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rBZV1PCeR4tZvWzQ8Adh6077SFb50YdCMFqVAW1zZak=", "user"=>{"first_name"=>"", "last_name"=>"", "username"=>"", "password"=>"[FILTERED]"}, "commit"=>"注册"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."username" = '' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  Rendered shared/_content_title.html.erb (0.5ms)
+  Rendered todos/_errors.html.erb (3.9ms)
+  Rendered users/new.html.erb within layouts/application (54.1ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 477ms (Views: 460.8ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users" for 121.195.114.5 at 2016-01-17 05:17:32 +0000
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rBZV1PCeR4tZvWzQ8Adh6077SFb50YdCMFqVAW1zZak=", "user"=>{"first_name"=>"", "last_name"=>"", "username"=>"hdy2", "password"=>"[FILTERED]"}, "commit"=>"注册"}
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."username" = 'hdy2' LIMIT 1[0m
+Binary data inserted for `string` type on column `password_digest`
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("created_at", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", "2016-01-17 05:17:32.256618"], ["first_name", ""], ["last_name", ""], ["password_digest", "$2a$10$QQ48Axg02AMsliP1hRYRYeamf.lvayhTSHQJZx4IeMZG.fywA.0zW"], ["updated_at", "2016-01-17 05:17:32.256618"], ["username", "hdy2"]]
+  [1m[36m (11.6ms)[0m  [1mcommit transaction[0m
+Redirected to https://todo-huangbin0202.c9users.io/
+Completed 302 Found in 92ms (ActiveRecord: 12.4ms)
+
+
+Started GET "/" for 121.195.114.5 at 2016-01-17 05:17:32 +0000
+Processing by TodosController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mTodo Load (0.1ms)[0m  [1mSELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ? AND "todos"."time_pinned" = '2016-01-17'[0m  [["user_id", 5]]
+  [1m[35mTodo Load (1.3ms)[0m  SELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ?  ORDER BY deadline IS NULL, deadline ASC  [["user_id", 5]]
+  Rendered todos/index.html.erb within layouts/application (2.9ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 5]]
+  Rendered layouts/_navigation.html.erb (4.4ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 335ms (Views: 330.8ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/users/5" for 121.195.114.5 at 2016-01-17 05:17:37 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 5]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered todos/_errors.html.erb (0.1ms)
+  Rendered users/_form.html.erb (4.7ms)
+  Rendered users/show.html.erb within layouts/application (9.0ms)
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?  [["user_id", 5]]
+  Rendered layouts/_navigation.html.erb (4.9ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 444ms (Views: 322.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/5/edit" for 121.195.114.5 at 2016-01-17 05:17:40 +0000
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 5]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered todos/_errors.html.erb (0.1ms)
+  Rendered users/_form.html.erb (4.9ms)
+  Rendered users/edit.html.erb within layouts/application (8.6ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 5]]
+  Rendered layouts/_navigation.html.erb (3.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 392ms (Views: 388.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/todos/new" for 121.195.114.5 at 2016-01-17 05:17:42 +0000
+Processing by TodosController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 5]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered todos/_errors.html.erb (0.1ms)
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 5]]
+  Rendered todos/new.html.erb within layouts/application (96.1ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?  [["user_id", 5]]
+  Rendered layouts/_navigation.html.erb (4.1ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 469ms (Views: 464.3ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/todos" for 121.195.114.215 at 2016-01-17 05:17:53 +0000
+Processing by TodosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rBZV1PCeR4tZvWzQ8Adh6077SFb50YdCMFqVAW1zZak=", "todo"=>{"title"=>"hhjjj", "description"=>"dsadsa", "category_ids"=>[""], "deadline"=>""}, "commit"=>"添加"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "todos" ("created_at", "description", "title", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2016-01-17 05:17:53.838148"], ["description", "dsadsa"], ["title", "hhjjj"], ["updated_at", "2016-01-17 05:17:53.838148"], ["user_id", 5]]
+  [1m[35m (13.5ms)[0m  commit transaction
+Redirected to https://todo-huangbin0202.c9users.io/
+Completed 302 Found in 42ms (ActiveRecord: 14.7ms)
+
+
+Started GET "/" for 121.195.114.215 at 2016-01-17 05:17:54 +0000
+Processing by TodosController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mTodo Load (0.1ms)[0m  SELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ? AND "todos"."time_pinned" = '2016-01-17'  [["user_id", 5]]
+  [1m[36mTodo Load (0.2ms)[0m  [1mSELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ?  ORDER BY deadline IS NULL, deadline ASC[0m  [["user_id", 5]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "comments"  WHERE "comments"."todo_id" = ?  [["todo_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "comments"  WHERE "comments"."todo_id" = ?[0m  [["todo_id", 1]]
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "todo_categories" ON "categories"."id" = "todo_categories"."category_id" WHERE "todo_categories"."todo_id" = ?  [["todo_id", 1]]
+  Rendered todos/_todo.html.erb (12.1ms)
+  Rendered todos/index.html.erb within layouts/application (16.1ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 5]]
+  Rendered layouts/_navigation.html.erb (4.4ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 337ms (Views: 331.9ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/todos/1" for 121.195.114.215 at 2016-01-17 05:17:58 +0000
+Processing by TodosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mTodo Load (0.3ms)[0m  [1mSELECT  "todos".* FROM "todos"  WHERE "todos"."user_id" = ? AND "todos"."id" = ? LIMIT 1[0m  [["user_id", 5], ["id", 1]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "comments"  WHERE "comments"."todo_id" = ?  [["todo_id", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "todo_categories" ON "categories"."id" = "todo_categories"."category_id" WHERE "todo_categories"."todo_id" = ?[0m  [["todo_id", 1]]
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments"  WHERE "comments"."todo_id" = ?  [["todo_id", 1]]
+  Rendered todos/show.html.erb within layouts/application (28.2ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 5]]
+  Rendered layouts/_navigation.html.erb (5.0ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 430ms (Views: 423.4ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/todos/1" for 121.195.114.42 at 2016-01-17 05:18:04 +0000
+Processing by TodosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mTodo Load (0.1ms)[0m  [1mSELECT  "todos".* FROM "todos"  WHERE "todos"."user_id" = ? AND "todos"."id" = ? LIMIT 1[0m  [["user_id", 5], ["id", 1]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "comments"  WHERE "comments"."todo_id" = ?  [["todo_id", 1]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "todo_categories" ON "categories"."id" = "todo_categories"."category_id" WHERE "todo_categories"."todo_id" = ?[0m  [["todo_id", 1]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments"  WHERE "comments"."todo_id" = ?  [["todo_id", 1]]
+  Rendered todos/show.html.erb within layouts/application (123.4ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 5]]
+  Rendered layouts/_navigation.html.erb (4.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 421ms (Views: 415.9ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/todos/1/edit" for 121.195.114.42 at 2016-01-17 05:18:09 +0000
+Processing by TodosController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mTodo Load (0.1ms)[0m  [1mSELECT  "todos".* FROM "todos"  WHERE "todos"."user_id" = ? AND "todos"."id" = ? LIMIT 1[0m  [["user_id", 5], ["id", 1]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?  [["user_id", 5]]
+  Rendered todos/edit.html.erb within layouts/application (148.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 5]]
+  Rendered layouts/_navigation.html.erb (63.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 454ms (Views: 449.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 121.195.114.235 at 2016-01-17 05:18:22 +0000
+Processing by TodosController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mTodo Load (0.1ms)[0m  [1mSELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ? AND "todos"."time_pinned" = '2016-01-17'[0m  [["user_id", 5]]
+  [1m[35mTodo Load (0.2ms)[0m  SELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ?  ORDER BY deadline IS NULL, deadline ASC  [["user_id", 5]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "comments"  WHERE "comments"."todo_id" = ?[0m  [["todo_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "comments"  WHERE "comments"."todo_id" = ?  [["todo_id", 1]]
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "todo_categories" ON "categories"."id" = "todo_categories"."category_id" WHERE "todo_categories"."todo_id" = ?[0m  [["todo_id", 1]]
+  Rendered todos/_todo.html.erb (64.9ms)
+  Rendered todos/index.html.erb within layouts/application (69.0ms)
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?  [["user_id", 5]]
+  Rendered layouts/_navigation.html.erb (2.5ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 313ms (Views: 308.7ms | ActiveRecord: 1.1ms)
+
+
+Started DELETE "/todos/1" for 121.195.114.235 at 2016-01-17 05:18:27 +0000
+Processing by TodosController#destroy as HTML
+  Parameters: {"authenticity_token"=>"rBZV1PCeR4tZvWzQ8Adh6077SFb50YdCMFqVAW1zZak=", "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mTodo Load (0.4ms)[0m  SELECT  "todos".* FROM "todos"  WHERE "todos"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mSQL (12.5ms)[0m  [1mDELETE FROM "todos" WHERE "todos"."id" = 1[0m
+Redirected to https://todo-huangbin0202.c9users.io/todos
+Completed 302 Found in 17ms (ActiveRecord: 13.0ms)
+
+
+Started GET "/todos" for 121.195.114.235 at 2016-01-17 05:18:27 +0000
+Processing by TodosController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mTodo Load (0.2ms)[0m  [1mSELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ? AND "todos"."time_pinned" = '2016-01-17'[0m  [["user_id", 5]]
+  [1m[35mTodo Load (0.5ms)[0m  SELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ?  ORDER BY deadline IS NULL, deadline ASC  [["user_id", 5]]
+  Rendered todos/index.html.erb within layouts/application (2.3ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 5]]
+  Rendered layouts/_navigation.html.erb (3.8ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 362ms (Views: 358.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/todos/new" for 121.195.114.44 at 2016-01-17 05:18:35 +0000
+Processing by TodosController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 5]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered todos/_errors.html.erb (0.1ms)
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 5]]
+  Rendered todos/new.html.erb within layouts/application (12.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?  [["user_id", 5]]
+  Rendered layouts/_navigation.html.erb (2.9ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 394ms (Views: 391.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/todos/new" for 121.195.114.44 at 2016-01-17 05:18:38 +0000
+Processing by TodosController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 5]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered todos/_errors.html.erb (0.1ms)
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?  [["user_id", 5]]
+  Rendered todos/new.html.erb within layouts/application (11.8ms)
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 5]]
+  Rendered layouts/_navigation.html.erb (3.8ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 354ms (Views: 351.5ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/todos" for 121.195.114.64 at 2016-01-17 05:18:54 +0000
+Processing by TodosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rBZV1PCeR4tZvWzQ8Adh6077SFb50YdCMFqVAW1zZak=", "todo"=>{"title"=>"sad", "description"=>"dsadsadsa", "category_ids"=>[""], "deadline"=>"2015-12-28 13:18"}, "commit"=>"添加"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered todos/_errors.html.erb (117.3ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 5]]
+  Rendered todos/new.html.erb within layouts/application (127.2ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?  [["user_id", 5]]
+  Rendered layouts/_navigation.html.erb (2.7ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 402ms (Views: 396.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 121.195.114.50 at 2016-01-17 05:20:51 +0000
+Processing by TodosController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mTodo Load (0.2ms)[0m  SELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ? AND "todos"."time_pinned" = '2016-01-17'  [["user_id", 5]]
+  [1m[36mTodo Load (0.3ms)[0m  [1mSELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ?  ORDER BY deadline IS NULL, deadline ASC[0m  [["user_id", 5]]
+  Rendered todos/index.html.erb within layouts/application (3.4ms)
+  [1m[35mCategory Load (0.3ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?  [["user_id", 5]]
+  Rendered layouts/_navigation.html.erb (30.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 365ms (Views: 321.1ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/todos/new" for 121.195.114.50 at 2016-01-17 05:20:54 +0000
+Processing by TodosController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 5]]
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered todos/_errors.html.erb (0.1ms)
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?  [["user_id", 5]]
+  Rendered todos/new.html.erb within layouts/application (28.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 5]]
+  Rendered layouts/_navigation.html.erb (2.2ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 368ms (Views: 364.0ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/todos" for 121.195.114.230 at 2016-01-17 05:21:03 +0000
+Processing by TodosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rBZV1PCeR4tZvWzQ8Adh6077SFb50YdCMFqVAW1zZak=", "todo"=>{"title"=>"hhjjj", "description"=>"dd", "category_ids"=>[""], "deadline"=>""}, "commit"=>"添加"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "todos" ("created_at", "description", "title", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["created_at", "2016-01-17 05:21:03.106899"], ["description", "dd"], ["title", "hhjjj"], ["updated_at", "2016-01-17 05:21:03.106899"], ["user_id", 5]]
+  [1m[36m (15.3ms)[0m  [1mcommit transaction[0m
+Redirected to https://todo-huangbin0202.c9users.io/
+Completed 302 Found in 32ms (ActiveRecord: 16.4ms)
+
+
+Started GET "/" for 121.195.114.230 at 2016-01-17 05:21:03 +0000
+Processing by TodosController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mTodo Load (0.1ms)[0m  [1mSELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ? AND "todos"."time_pinned" = '2016-01-17'[0m  [["user_id", 5]]
+  [1m[35mTodo Load (0.1ms)[0m  SELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ?  ORDER BY deadline IS NULL, deadline ASC  [["user_id", 5]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "comments"  WHERE "comments"."todo_id" = ?[0m  [["todo_id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "comments"  WHERE "comments"."todo_id" = ?  [["todo_id", 2]]
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "todo_categories" ON "categories"."id" = "todo_categories"."category_id" WHERE "todo_categories"."todo_id" = ?[0m  [["todo_id", 2]]
+  Rendered todos/_todo.html.erb (9.9ms)
+  Rendered todos/index.html.erb within layouts/application (13.1ms)
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?  [["user_id", 5]]
+  Rendered layouts/_navigation.html.erb (2.9ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 263ms (Views: 258.7ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/" for 121.195.114.42 at 2016-01-17 05:22:16 +0000
+Processing by TodosController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mTodo Load (0.3ms)[0m  SELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ? AND "todos"."time_pinned" = '2016-01-17'  [["user_id", 5]]
+  [1m[36mTodo Load (0.3ms)[0m  [1mSELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ?  ORDER BY deadline IS NULL, deadline ASC[0m  [["user_id", 5]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "comments"  WHERE "comments"."todo_id" = ?  [["todo_id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "comments"  WHERE "comments"."todo_id" = ?[0m  [["todo_id", 2]]
+  [1m[35mCategory Load (0.3ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "todo_categories" ON "categories"."id" = "todo_categories"."category_id" WHERE "todo_categories"."todo_id" = ?  [["todo_id", 2]]
+  Rendered todos/_todo.html.erb (32.8ms)
+  Rendered todos/index.html.erb within layouts/application (55.7ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 5]]
+  Rendered layouts/_navigation.html.erb (13.8ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 424ms (Views: 371.6ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/logout" for 121.195.114.42 at 2016-01-17 05:22:19 +0000
+Processing by SessionsController#destroy as HTML
+Redirected to https://todo-huangbin0202.c9users.io/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 121.195.114.42 at 2016-01-17 05:22:19 +0000
+Processing by TodosController#index as HTML
+  Rendered todos/index.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_navigation.html.erb (0.2ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 296ms (Views: 294.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 121.195.114.42 at 2016-01-17 05:22:21 +0000
+Processing by SessionsController#new as HTML
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered sessions/new.html.erb within layouts/application (4.5ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 419ms (Views: 418.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 121.195.114.42 at 2016-01-17 05:22:22 +0000
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rBZV1PCeR4tZvWzQ8Adh6077SFb50YdCMFqVAW1zZak=", "username"=>"", "password"=>"[FILTERED]", "commit"=>"登录"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."username" = '' LIMIT 1
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered sessions/new.html.erb within layouts/application (4.8ms)
+  Rendered layouts/_navigation.html.erb (0.2ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 350ms (Views: 347.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 121.195.114.42 at 2016-01-17 05:22:24 +0000
+Processing by TodosController#index as HTML
+  Rendered todos/index.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_navigation.html.erb (0.2ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 339ms (Views: 337.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/register" for 121.195.114.42 at 2016-01-17 05:22:26 +0000
+Processing by UsersController#new as HTML
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered todos/_errors.html.erb (0.6ms)
+  Rendered users/new.html.erb within layouts/application (12.4ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 337ms (Views: 335.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 121.195.114.42 at 2016-01-17 05:22:27 +0000
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rBZV1PCeR4tZvWzQ8Adh6077SFb50YdCMFqVAW1zZak=", "user"=>{"first_name"=>"", "last_name"=>"", "username"=>"", "password"=>"[FILTERED]"}, "commit"=>"注册"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."username" = '' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered todos/_errors.html.erb (4.4ms)
+  Rendered users/new.html.erb within layouts/application (14.9ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 379ms (Views: 369.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 121.195.114.130 at 2016-01-17 05:22:42 +0000
+Processing by TodosController#index as HTML
+  Rendered todos/index.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 290ms (Views: 288.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/register" for 121.195.114.130 at 2016-01-17 05:22:44 +0000
+Processing by UsersController#new as HTML
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered todos/_errors.html.erb (0.6ms)
+  Rendered users/new.html.erb within layouts/application (9.4ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 283ms (Views: 281.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 121.195.114.130 at 2016-01-17 05:22:46 +0000
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rBZV1PCeR4tZvWzQ8Adh6077SFb50YdCMFqVAW1zZak=", "user"=>{"first_name"=>"", "last_name"=>"", "username"=>"", "password"=>"[FILTERED]"}, "commit"=>"注册"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."username" = '' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  Rendered shared/_content_title.html.erb (0.1ms)
+  Rendered todos/_errors.html.erb (1.5ms)
+  Rendered users/new.html.erb within layouts/application (9.3ms)
+  Rendered layouts/_navigation.html.erb (0.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 389ms (Views: 381.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 121.195.114.156 at 2016-01-17 05:24:07 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TodosController#index as HTML
+  Rendered todos/index.html.erb within layouts/application (8.5ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+  Rendered layouts/_messages.html.erb (0.7ms)
+Completed 200 OK in 586ms (Views: 566.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 121.195.114.254 at 2016-01-17 05:24:12 +0000
+Processing by SessionsController#new as HTML
+  Rendered shared/_content_title.html.erb (0.5ms)
+  Rendered sessions/new.html.erb within layouts/application (6.9ms)
+  Rendered layouts/_navigation.html.erb (5.1ms)
+  Rendered layouts/_messages.html.erb (0.9ms)
+Completed 200 OK in 333ms (Views: 331.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 121.195.114.254 at 2016-01-17 05:24:17 +0000
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rBZV1PCeR4tZvWzQ8Adh6077SFb50YdCMFqVAW1zZak=", "username"=>"hdy2", "password"=>"[FILTERED]", "commit"=>"登录"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."username" = 'hdy2' LIMIT 1
+Redirected to https://todo-huangbin0202.c9users.io/
+Completed 302 Found in 235ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 121.195.114.254 at 2016-01-17 05:24:17 +0000
+Processing by TodosController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mTodo Load (0.3ms)[0m  SELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ? AND "todos"."time_pinned" = '2016-01-17'  [["user_id", 5]]
+  [1m[36mTodo Load (0.3ms)[0m  [1mSELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ?  ORDER BY deadline IS NULL, deadline ASC[0m  [["user_id", 5]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "comments"  WHERE "comments"."todo_id" = ?  [["todo_id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "comments"  WHERE "comments"."todo_id" = ?[0m  [["todo_id", 2]]
+  [1m[35mCategory Load (0.5ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "todo_categories" ON "categories"."id" = "todo_categories"."category_id" WHERE "todo_categories"."todo_id" = ?  [["todo_id", 2]]
+  Rendered todos/_todo.html.erb (75.9ms)
+  Rendered todos/index.html.erb within layouts/application (104.0ms)
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 5]]
+  Rendered layouts/_navigation.html.erb (9.7ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+Completed 200 OK in 471ms (Views: 407.7ms | ActiveRecord: 4.7ms)

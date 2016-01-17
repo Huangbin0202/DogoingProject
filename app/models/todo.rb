@@ -16,7 +16,7 @@ class Todo < ActiveRecord::Base
 
   def date_cannot_be_in_past
     if deadline && deadline < Time.now 
-      errors.add(:deadline, 'Deadline cannot be in the past')
+      errors.add(:deadline, '期限不能为过去时')
     end
   end
 

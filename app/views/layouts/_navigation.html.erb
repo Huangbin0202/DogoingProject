@@ -17,6 +17,19 @@
     <% if logged_in? %>
 
       <ul class="nav navbar-nav navbar-right">
+
+        <li>                
+          <%= link_to new_bug_path, {title: '提交bug'} do %>
+            <i class="fa fa-bug"></i>
+          <% end %>
+        </li>
+      
+        <li>
+          <%= link_to new_feature_path, {title: '建议'} do %>
+            <i class="fa fa-bullhorn"></i>
+          <% end %>
+        </li>
+        
         <li class="dropdown">
           <%= link_to '#', class: 'dropdown-toggle', 'data-toggle' => 'dropdown' do %>
             <%= @user.username %> <span class="caret" ></span>

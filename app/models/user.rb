@@ -13,6 +13,4 @@ class User < ActiveRecord::Base
   has_secure_password validations: false
 end
 
-# user creates a todo and assigns categories
-## if the category doesnt exist and new one is created
-## category is added to usrs cats if doesnt exist
+

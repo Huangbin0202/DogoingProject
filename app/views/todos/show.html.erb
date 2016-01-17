@@ -1,0 +1,34 @@
+<%= render 'shared/content_title', title: "#{@todo.title}" %>
+
+<p><%= @todo.description %></p>
+<% if @todo.deadline %>
+  <p>期限: <%= time_left_in_words_long_version(@todo.deadline) %></p>
+<% else %>
+  <p>无期限</p>
+<% end %>
+<p>Notes: <span class="badge"><%= @todo.comments.count %></span></p>
+<p>
+<% @todo.categories.each do |category| %>
+  <span class="label label-info"><%= link_to category.name, category_path(category) %></span>
+<% end %>
+</p>
+
+<%= form_for [@todo, @comment] do |f| %>
+
+    <div class="form-group span8">
+      <%= f.label :body, '笔记' %>
+      <%= f.text_area :body, rows: 5, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.submit '添加笔记', class: 'btn btn-primary' %>  
+    </div>
+<% end %>
+
+
+<% @todo.comments.reverse.each do |comment|%>
+<div class="well span8">
+  <p><em><%= comment.body %></em></p>
+  <%= link_to comment.user.first_name %><span class="quiet"> 添加了这条笔记 </span><%= time_ago(comment.created_at) %>
+ <span class="quiet">ago</span></div>
+<% end %>
+

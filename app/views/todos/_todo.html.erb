@@ -1,0 +1,59 @@
+<% if todo.deadline.nil? %>
+  <div class="todo_item">
+<% elsif lights(todo.deadline) == :red %>
+  <div class="todo_item red">
+<% elsif lights(todo.deadline) == :amber %>
+  <div class="todo_item amber">
+<% else %>
+  <div class="todo_item green">
+<% end %>
+
+    <p class="pull-right">
+
+      <% unless todo.done %>
+        <% if todo.pinned? %>
+          <%= link_to unpin_todo_path(todo), method: :post, class: "btn btn-sm btn-default pinned", title: "取消置顶" do %>
+              <i class="fa fa-thumb-tack"></i>
+          <% end %>
+        <!-- Need to undo pin if pinned_date is not today and add to flow below -->
+        <% else %>
+          <%= link_to pinned_todo_path(todo), method: :post, class: "btn btn-sm btn-default", title: "置顶" do %>
+              <i class="fa fa-thumb-tack"></i>
+          <% end %>
+        <% end %>
+      <% end %>
+
+      
+      <% if todo.done? %>
+        <%= link_to not_complete_todo_path(todo), method: :post, class: 'btn btn-sm btn-default complete_button completed', title: "取消已完成", data: {confirm: "确定 #{todo.title} 未完成？"} do %>
+          <i class="fa fa-check"></i>
+        <% end %>
+      <% else %>
+        <%= link_to complete_todo_path(todo), method: :post, class: 'btn btn-sm btn-default complete_button', title: "已完成", data: {confirm: "确定 #{todo.title} 完成？"} do %>
+          <i class="fa fa-check"></i>
+        <% end %>
+      <% end %>
+
+
+      <%= link_to edit_todo_path(todo), class: 'btn btn-sm btn-default edit' do %>
+        <i class="fa fa-edit"></i>
+      <% end %>
+      <%= link_to todo_path(todo), class: 'btn btn-sm btn-default destroy', title: "删除", method: :delete, data: {confirm: "确定删除？ #{todo.title}"} do %>
+        <i class="fa fa-bomb"></i>
+      <% end %>
+    </p>
+    <h5><%= link_to todo.title, todo_path(todo) %></h5>
+    <div class="info clearfix pull-right">
+      <% unless todo.done %>
+        <% if todo.deadline %>     
+          <p><%= time_left_in_words_short_version(todo.deadline) %></p>
+        <% end %>
+      <% end %>  
+      <p><%= notes_indicator(todo) %> <span class="badge"><%= todo.comments.count %></span></p>
+    </div>  
+    <i class="fa fa-tags" title="categories"></i>
+    <% todo.categories.each do |category| %>
+      <span class="label label-default"><%= link_to category.name, category_path(category) %></span>
+    <% end %>
+
+</div>

@@ -1,0 +1,153 @@
+  [1m[36m (22.4ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (9.8ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateUsers (20150107142901)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150107142901"]]
+  [1m[35m (12.4ms)[0m  commit transaction
+Migrating to AddColsToUsers (20150107143322)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  ALTER TABLE "users" ADD "first_name" varchar(255)
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "users" ADD "last_name" varchar(255)[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "users" ADD "created_at" datetime
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "updated_at" datetime[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "email" varchar(255)
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "sms" varchar(255)[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150107143322"]]
+  [1m[36m (12.1ms)[0m  [1mcommit transaction[0m
+Migrating to CreateTodos (20150107153358)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.6ms)[0m  [1mCREATE TABLE "todos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "deadline" datetime, "notifications" boolean, "user_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150107153358"]]
+  [1m[36m (8.4ms)[0m  [1mcommit transaction[0m
+Migrating to CreateComments (20150107160904)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" text, "user_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150107160904"]]
+  [1m[36m (9.3ms)[0m  [1mcommit transaction[0m
+Migrating to AddTodoIdToComments (20150107161422)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.6ms)[0m  [1mALTER TABLE "comments" ADD "todo_id" integer[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150107161422"]]
+  [1m[36m (11.9ms)[0m  [1mcommit transaction[0m
+Migrating to CreateCategories (20150107221714)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.6ms)[0m  [1mCREATE TABLE "categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150107221714"]]
+  [1m[36m (9.5ms)[0m  [1mcommit transaction[0m
+Migrating to CreateTodoCategories (20150107222537)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.7ms)[0m  [1mCREATE TABLE "todo_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "todo_id" integer, "category_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150107222537"]]
+  [1m[36m (11.6ms)[0m  [1mcommit transaction[0m
+Migrating to PassWordDigestToUsers (20150123104652)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.8ms)[0m  [1mALTER TABLE "users" ADD "password_digest" varchar(255)[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150123104652"]]
+  [1m[36m (7.1ms)[0m  [1mcommit transaction[0m
+Migrating to AddUsernameToUsers (20150123120502)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "users" ADD "username" varchar(255)[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150123120502"]]
+  [1m[36m (9.2ms)[0m  [1mcommit transaction[0m
+Migrating to CreateUserCategories (20150124193703)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "user_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "category_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150124193703"]]
+  [1m[36m (8.0ms)[0m  [1mcommit transaction[0m
+Migrating to CreateBugs (20150205121148)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "bugs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "user_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150205121148"]]
+  [1m[36m (13.0ms)[0m  [1mcommit transaction[0m
+Migrating to CreateFeatures (20150205132541)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "features" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "user_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150205132541"]]
+  [1m[36m (8.1ms)[0m  [1mcommit transaction[0m
+Migrating to AddDoneToTodos (20150205212103)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.7ms)[0m  [1mALTER TABLE "todos" ADD "done" boolean[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150205212103"]]
+  [1m[36m (9.6ms)[0m  [1mcommit transaction[0m
+Migrating to AddPinnedToTodos (20150218131344)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.6ms)[0m  [1mALTER TABLE "todos" ADD "pinned" boolean[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150218131344"]]
+  [1m[36m (11.6ms)[0m  [1mcommit transaction[0m
+Migrating to AddPinnedTimeToTodos (20150218155458)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.7ms)[0m  [1mALTER TABLE "todos" ADD "time_pinned" date[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150218155458"]]
+  [1m[36m (9.1ms)[0m  [1mcommit transaction[0m
+Migrating to RemovePinnedFromTodos (20150218200103)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (1.8ms)[0m  [1mCREATE TEMPORARY TABLE "atodos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "deadline" datetime, "notifications" boolean, "user_id" integer, "created_at" datetime, "updated_at" datetime, "done" boolean, "pinned" boolean, "time_pinned" date) [0m
+  [1m[35m (0.2ms)[0m  SELECT * FROM "todos"
+  [1m[36m (0.5ms)[0m  [1mDROP TABLE "todos"[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "todos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "deadline" datetime, "notifications" boolean, "user_id" integer, "created_at" datetime, "updated_at" datetime, "done" boolean, "time_pinned" date) 
+  [1m[36m (0.2ms)[0m  [1mSELECT * FROM "atodos"[0m
+  [1m[35m (0.5ms)[0m  DROP TABLE "atodos"
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150218200103"]]
+  [1m[35m (10.2ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for 121.195.114.14 at 2016-01-17 04:44:15 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TodosController#index as HTML
+  Rendered todos/index.html.erb within layouts/application (8.8ms)
+  Rendered layouts/_navigation.html.erb (2.2ms)
+  Rendered layouts/_messages.html.erb (0.8ms)
+Completed 200 OK in 7171ms (Views: 7154.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/register" for 121.195.114.143 at 2016-01-17 04:44:28 +0000
+Processing by UsersController#new as HTML
+  Rendered shared/_content_title.html.erb (0.7ms)
+  Rendered todos/_errors.html.erb (6.3ms)
+  Rendered users/new.html.erb within layouts/application (86.7ms)
+  Rendered layouts/_navigation.html.erb (3.0ms)
+  Rendered layouts/_messages.html.erb (0.8ms)
+Completed 200 OK in 511ms (Views: 425.0ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/users" for 121.195.114.195 at 2016-01-17 04:44:38 +0000
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DzQ6UUQAHPQ7SV1qJssIENh+qCf7un2NyS3ThVynMqo=", "user"=>{"first_name"=>"xiao", "last_name"=>"mi", "username"=>"", "password"=>"[FILTERED]"}, "commit"=>"注册"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."username" = '' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  Rendered shared/_content_title.html.erb (0.6ms)
+  Rendered todos/_errors.html.erb (3.1ms)
+  Rendered users/new.html.erb within layouts/application (40.0ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 358ms (Views: 332.1ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users" for 121.195.114.87 at 2016-01-17 04:44:58 +0000
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DzQ6UUQAHPQ7SV1qJssIENh+qCf7un2NyS3ThVynMqo=", "user"=>{"first_name"=>"xiao", "last_name"=>"mi", "username"=>"huangbin", "password"=>"[FILTERED]"}, "commit"=>"注册"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."username" = 'huangbin' LIMIT 1
+Binary data inserted for `string` type on column `password_digest`
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "first_name", "last_name", "password_digest", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", "2016-01-17 04:44:58.656731"], ["first_name", "xiao"], ["last_name", "mi"], ["password_digest", "$2a$10$SH7vFnhTwTg4Q5n5oKCXS.Yeroye1BVMC9GaZJeD8nPI/XII81O32"], ["updated_at", "2016-01-17 04:44:58.656731"], ["username", "huangbin"]]
+  [1m[35m (12.7ms)[0m  commit transaction
+Redirected to https://todo-huangbin0202.c9users.io/
+Completed 302 Found in 98ms (ActiveRecord: 13.5ms)
+
+
+Started GET "/" for 121.195.114.87 at 2016-01-17 04:44:59 +0000
+Processing by TodosController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTodo Load (0.4ms)[0m  SELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ? AND "todos"."time_pinned" = '2016-01-17'  [["user_id", 1]]
+  [1m[36mTodo Load (0.5ms)[0m  [1mSELECT "todos".* FROM "todos"  WHERE "todos"."user_id" = ?  ORDER BY deadline IS NULL, deadline ASC[0m  [["user_id", 1]]
+  Rendered todos/index.html.erb within layouts/application (60.2ms)
+  [1m[35mCategory Load (0.3ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?  [["user_id", 1]]
+  Rendered layouts/_navigation.html.erb (35.4ms)
+  Rendered layouts/_messages.html.erb (0.3ms)
+Completed 200 OK in 465ms (Views: 350.6ms | ActiveRecord: 2.9ms)

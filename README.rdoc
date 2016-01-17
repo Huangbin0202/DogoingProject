@@ -1,1 +1,3 @@
 == README
+
+罗老师的高级软件工程大作业项目，基于Rails的ToDoList应用。
